@@ -8,6 +8,6 @@ metadata:
 spec:
   containers:
   - name: nginx
-    image: registry,ocp4.example.com:8443/redhattraining/hello-world-nginx
+    image: hello-world-nginx
     ports:
     - containerPort: 80
