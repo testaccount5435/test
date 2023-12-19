@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment:
+metadata:
+  name: configuration-example
+spect:
+  replicas: 2
+  selector:
+      matchlabeles:
+        app: configuration-example
+  template:
+    metdata:
+      labels:
+        app: configuration-example
+  spec:
+    containers:
+    - env:
+      - name: ENV_VARIABLE_1
+        valueFrom:
+          secretKeyRef:
+            key: hello
+            name: world
+      image: quay.io/hello-image:test
