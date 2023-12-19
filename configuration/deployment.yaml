@@ -1,22 +1,21 @@
 apiVersion: apps/v1
-kind: Deployment:
+kind: Deployment
 metadata:
-  name: configuration-example
-spect:
-  replicas: 2
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
   selector:
-      matchlabeles:
-        app: configuration-example
+    matchLabels:
+      app: nginx
   template:
-    metdata:
+    metadata:
       labels:
-        app: configuration-example
-  spec:
-    containers:
-    - env:
-      - name: ENV_VARIABLE_1
-        valueFrom:
-          secretKeyRef:
-            key: hello
-            name: world
-      image: quay.io/hello-image:test
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
